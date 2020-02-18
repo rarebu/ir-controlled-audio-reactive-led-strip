@@ -1,2 +1,4 @@
 # ir-controlled-audio-reactive-led-strip
-# ir-controlled-audio-reactive-led-strip
+this project mainly uses code from:
+https://github.com/jgarff/rpi_ws281x
+https://github.com/scottlawsonbc/audio-reactive-led-strip
