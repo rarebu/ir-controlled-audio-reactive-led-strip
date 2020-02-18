@@ -7,7 +7,7 @@ ERROR = 0xFE
 PIN = 12
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.IN, GPIO.PUD_UP)
-PATH = "/home/pi/audio-reactive-led-strip/python/"
+PATH = "/home/pi/led-strip-fun/audio-reactive-led-strip/python/"
 EFFECT_SCROLL = PATH + "visualization-scroll.py"
 EFFECT_ENERGY = PATH + "visualization-energy.py"
 EFFECT_SPECTRUM = PATH + "visualization-spectrum.py"
@@ -87,15 +87,15 @@ try:
                 p = subprocess.Popen(['python', EFFECT_SPECTRUM])
                 CURRENT_EFFECT = EFFECT_SPECTRUM
             elif key == 8:
-                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 5/g", '/home/pi/audio-reactive-led-strip/python/config.py'])
+                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 5/g", '/home/pi/led-strip-fun/audio-reactive-led-strip/python/config.py'])
                 p.terminate()
                 p = subprocess.Popen(['python', CURRENT_EFFECT])
             elif key == 28:
-                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 125/g", '/home/pi/audio-reactive-led-strip/python/config.py'])
+                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 125/g", '/home/pi/led-strip-fun/audio-reactive-led-strip/python/config.py'])
                 p.terminate()
                 p = subprocess.Popen(['python', CURRENT_EFFECT])
             elif key == 90:
-                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 255/g", '/home/pi/audio-reactive-led-strip/python/config.py'])
+                subprocess.Popen(['sed', '-i', "s/BRIGHTNESS = [0-9]*/BRIGHTNESS = 255/g", '/home/pi/led-strip-fun/audio-reactive-led-strip/python/config.py'])
                 p.terminate()
                 p = subprocess.Popen(['python', CURRENT_EFFECT])
             elif key == 69:
