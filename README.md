@@ -206,8 +206,8 @@ sudo apt-get install lirc -y<br/>
 ```sudo geany /etc/lirc/lirc_options.conf```
 Folgende Zeilen müssen geändert werden:
 ```
-    driver = default
-    device = /dev/lirc
+driver = default
+device = /dev/lirc
 ```
 **3.** Als nächstes geben wir folgenden Befehl ein um die Konfiguration lesbar zu machen:
 ```sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf```
