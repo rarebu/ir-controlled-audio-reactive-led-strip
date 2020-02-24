@@ -90,7 +90,7 @@ Terminal-Fenster und geben folgenden Zeile ein:
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install gcc make build-essential
 python-dev git scons swig python-numpy python-scipy python-pyaudio -y
 **2.** Dann müssen wir die Boot-Konfiguration ändern
-sudo geany /boot/config.txt
+```sudo geany /boot/config.txt```
 Hier müssen folgende Zeilen verändert werden (es ist möglicherweise ein # am Anfang welches
 entfernt werden muss):
 ```
