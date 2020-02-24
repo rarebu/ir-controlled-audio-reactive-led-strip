@@ -200,10 +200,10 @@ Keine Panik, die Installation wird folgenden Fehler melden: “Failed to start F
 input/output application support"
 Das ist kein Problem, wir müssen jetzt nur den nächsten Befehl eingeben, und dann das Infrarot-Modul
 erneut installieren:
-sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
-sudo apt-get install lirc -y<br/>
+```sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
+sudo apt-get install lirc -y```<br/>
 **2.** Jetzt müssen wir noch ein paar änderungen an der Infrarot-Konfiguration vornehmen:
-sudo geany /etc/lirc/lirc_options.conf
+```sudo geany /etc/lirc/lirc_options.conf```
 Folgende Zeilen müssen geändert werden:
 ```
     driver = default
@@ -211,7 +211,7 @@ Folgende Zeilen müssen geändert werden:
 ```
 <br/>
 **3.** Als nächstes geben wir folgenden Befehl ein um die Konfiguration lesbar zu machen:
-sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf<br/>
+```sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf```<br/>
 **4.** Jetzt starten wir das Infrarot-Modul:
 ```sudo systemctl restart lircd.service```<br/>
 **5.** Ändern des Automatischen starten, so dass ab jetzt die Fernbedienung beim einschalten des Pis
