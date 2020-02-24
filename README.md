@@ -87,15 +87,15 @@ Terminal-Fenster nacheinander eingefügt werden:
 
 **1.** Zuerst müssen wir das System updaten und die benötigten Pakete installieren. Hierfür öffnen wir ein
 Terminal-Fenster und geben folgenden Zeile ein:
+```
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install gcc make build-essential
 python-dev git scons swig python-numpy python-scipy python-pyaudio -y
+```
 **2.** Dann müssen wir die Boot-Konfiguration ändern
 ```sudo geany /boot/config.txt```
 Hier müssen folgende Zeilen verändert werden (es ist möglicherweise ein # am Anfang welches
 entfernt werden muss):
-```
-dtparam=audio=on
-```
+```dtparam=audio=on```
 **3.** Jetzt müssen die benötigten dateien heruntergeladen und installiert werden:
 ```
 git clone https://github.com/rarebu/led-strip-fun.git
@@ -112,7 +112,6 @@ dann diese Zeile ganz am Ende einfügen:
 ```sudo geany /etc/asound.conf```
 In dieser Datei müssen nun folgende Zeilen eingefügt werden falls sie noch nicht existieren, oder
 geändert werden falls sie schon da sind:
-
 ```
 pcm.!default {
 ```
