@@ -200,8 +200,11 @@ Keine Panik, die Installation wird folgenden Fehler melden: “Failed to start F
 input/output application support"
 Das ist kein Problem, wir müssen jetzt nur den nächsten Befehl eingeben, und dann das Infrarot-Modul
 erneut installieren:
+```
 sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
-sudo apt-get install lirc -y<br/>
+sudo apt-get install lirc -y
+```
+
 **2.** Jetzt müssen wir noch ein paar nderungen an der Infrarot-Konfiguration vornehmen:
 ```sudo geany /etc/lirc/lirc_options.conf```
 Folgende Zeilen müssen geändert werden:
@@ -209,10 +212,13 @@ Folgende Zeilen müssen geändert werden:
 driver = default
 device = /dev/lirc
 ```
+
 **3.** Als nächstes geben wir folgenden Befehl ein um die Konfiguration lesbar zu machen:
 ```sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf```
+
 **4.** Jetzt starten wir das Infrarot-Modul:
 ```sudo systemctl restart lircd.service```
+
 **5.** Ändern des Automatischen starten, so dass ab jetzt die Fernbedienung beim einschalten des Pis
 benutzt werden kann:
 ```sudo crontab -e```
@@ -221,7 +227,8 @@ mit den Pfeiltasten bis zum Ende der Datei gehen und dann die letzte Zeile lösc
 einfügen:
 ```@reboot python /home/pi/led-strip-fun/led-strip-ir.py```
 Jetzt nur noch mit “STRG + O” (mit Enter bestätigen) speichern, und dann mit “STRG + X” das
-Programm wieder verlassen.<br/>
+Programm wieder verlassen.
+
 **6.** Die Fernbedienung
 Die Fernbedienung ist so eingestellt, dass die tasten 0, 100+ und 200+ die Helligkeit regeln. 0 ist das
 dunkelste, 200+ ist das Hellste.
