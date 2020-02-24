@@ -93,19 +93,23 @@ python-dev git scons swig python-numpy python-scipy python-pyaudio -y
 sudo geany /boot/config.txt
 Hier müssen folgende Zeilen verändert werden (es ist möglicherweise ein # am Anfang welches
 entfernt werden muss):
-    dtparam=audio=on
-**3.** Jetzt müssen die benötigten dateien heruntergeladen und installiert werden.:
+```
+dtparam=audio=on
+```
+**3.** Jetzt müssen die benötigten dateien heruntergeladen und installiert werden:
+```
 git clone https://github.com/rarebu/led-strip-fun.git
 cd rpi_ws281x
 scons
 cd python
 sudo python setup.py install
+```
 **4.** Dann müssen wir den Audio-Ausgang deaktivieren
-sudo geany /etc/modprobe.d/snd-blacklist.conf
+```sudo geany /etc/modprobe.d/snd-blacklist.conf```
 dann diese Zeile ganz am Ende einfügen:
-    blacklist snd_bcm
+```blacklist snd_bcm```
 **5.** Dann den Audio-Eingang konfigurieren:
-sudo geany /etc/asound.conf
+```sudo geany /etc/asound.conf```
 In dieser Datei müssen nun folgende Zeilen eingefügt werden falls sie noch nicht existieren, oder
 geändert werden falls sie schon da sind:
 
@@ -143,8 +147,10 @@ bearbeiten:
 sudo geany /home/pi/led-strip-fun/rpi_ws281x/python/examples/strandtest.py
 Je nachdem wieviele LEDs euer LED-Streifen hat, muss die Anzahl hier eingetragen werden: (In
 diesem Beispiel hat der LED-Streifen 120 LEDs)
-    LED_COUNT 120
-    LED_PIN 18
+```
+LED_COUNT 120
+LED_PIN 18
+```
 Jetzt können wir testen ob wir alles richtig gemacht haben:
 sudo python /home/pi/led-strip-fun/rpi_ws281x/python/examples/strandtest.py
 Jetzt solltet ihr auf dem LED-Streifen eine Testanimation mit ein paar schönen Farbspielen sehen
@@ -155,12 +161,13 @@ bearbeiten:
 sudo geany /home/pi/led-strip-fun/rpi_ws281x/python/examples/config.py
 Folgende Zeilen müssen angepasst werden. Bei N_PIXELS müssen wie in Schritt 8, die Anzahl der
 LEDs angegeben werden:
-    DEVICE = 'pi'
-    LED_INVERT = False
-    USE_GUI = False
-    DISPLAY_FPS = False
-    N_PIXELS = 120
-
+```
+DEVICE = 'pi'
+LED_INVERT = False
+USE_GUI = False
+DISPLAY_FPS = False
+N_PIXELS = 120
+```
 Mit diesem Befehl startet man die Visualisation:
 sudo python /home/pi/led-strip-fun/rpi_ws281x/python/examples/visualization.py
 Jetzt sollte die Visualisation laufen :)
@@ -168,20 +175,20 @@ Jetzt sollte die Visualisation laufen :)
 Das Programm kann ebenfalls mit den Tasten STRG + C wieder gestoppt werden.
 Es gibt 3 verschiedene Effekte: Spectrum, Scroll und Energy. Um zwischen den Effekten zu wechseln,
 muss dieser im Python-Script angegeben werden:
-sudo geany /home/pi/led-strip-fun/rpi_ws281x/python/examples/visualization.py
-Suche nach dieser Zeile: visualization_effect = visualize_spectrum
+```sudo geany /home/pi/led-strip-fun/rpi_ws281x/python/examples/visualization.py```
+Suche nach dieser Zeile: ```visualization_effect = visualize_spectrum```
 Anstelle von “spectrum” kann man “scroll” oder “energy” eintragen.
 
 **10**. Automatisches starten der Visualisation beim Einschalten des Pis
 Damit man nicht jedes mal wenn man den Pi einschält alles von Hand starten muss, fügen wir das
 Python-Script jetzt zum Autostart hinzu.
 Einfach folgendes in ein Terminal eingeben:
-sudo crontab -e
+```sudo crontab -e```
 Beim ersten mal wird man gefragt welchen Texteditor man verwenden soll, wir entscheiden uns hier
 für den ersten.
 1 eingeben und Enter drücken.
 Jetzt muss man mit den pfeiltasten bis ans ende der Datei gehen und dort dann folgende Zeile einfügen:
-@reboot python /home/pi/led-strip-fun/audio-reactive-led-strip/python/visualization.py
+```@reboot python /home/pi/led-strip-fun/audio-reactive-led-strip/python/visualization.py```
 speichere und schließe die datei mit: “STRG + O” (dann mit Enter bestätigen) und dann “STRG + X”
 
 
@@ -189,29 +196,33 @@ speichere und schließe die datei mit: “STRG + O” (dann mit Enter bestätige
 
 **1.** Folgendes muss in das Terminal eingegeben werden um zunächst das Infrarot-Modul auf dem
 Raspberry Pi zu installieren:
-sudo apt-get install lirc -y
+```sudo apt-get install lirc -y```
 Keine Panik, die Installation wird folgenden Fehler melden: “Failed to start Flexible IR remote
 input/output application support"
 Das ist kein Problem, wir müssen jetzt nur den nächsten Befehl eingeben, und dann das Infrarot-Modul
 erneut installieren:
-sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
-sudo apt-get install lirc -y
+```sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
+sudo apt-get install lirc -y```
 **2.** Jetzt müssen wir noch ein paar änderungen an der Infrarot-Konfiguration vornehmen:
-sudo geany /etc/lirc/lirc_options.conf
+```sudo geany /etc/lirc/lirc_options.conf```
 Folgende Zeilen müssen geändert werden:
+```
     driver = default
     device = /dev/lirc
+```
 **3.** Als nächstes geben wir folgenden Befehl ein um die Konfiguration lesbar zu machen:
-sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf
+```sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf```
 **4.** Jetzt starten wir das Infrarot-Modul:
-sudo systemctl restart lircd.service
+```sudo systemctl restart lircd.service```
 **5.** Ändern des Automatischen starten, so dass ab jetzt die Fernbedienung beim einschalten des Pis
 benutzt werden kann:
-sudo crontab -e
+```sudo crontab -e```
 Hier haben wir in Punkt 10 eine neue Zeile eingefügt. Diese müssen wir jetzt wieder löschen (einfach
 mit den Pfeiltasten bis zum Ende der Datei gehen und dann die letzte Zeile löschen und diese hier dafür
 einfügen:
+```
     @reboot python /home/pi/led-strip-fun/led-strip-ir.py
+```
 Jetzt nur noch mit “STRG + O” (mit Enter bestätigen) speichern, und dann mit “STRG + X” das
 Programm wieder verlassen.
 **6.** Die Fernbedienung
