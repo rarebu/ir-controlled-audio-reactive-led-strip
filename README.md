@@ -209,20 +209,17 @@ Folgende Zeilen müssen geändert werden:
     driver = default
     device = /dev/lirc
 ```
-<br/>
 **3.** Als nächstes geben wir folgenden Befehl ein um die Konfiguration lesbar zu machen:
-```sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf```<br/>
+sudo cp /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf<br/>
 **4.** Jetzt starten wir das Infrarot-Modul:
-```sudo systemctl restart lircd.service```<br/>
+sudo systemctl restart lircd.service<br/>
 **5.** Ändern des Automatischen starten, so dass ab jetzt die Fernbedienung beim einschalten des Pis
 benutzt werden kann:
-```sudo crontab -e```
+sudo crontab -e
 Hier haben wir in Punkt 10 eine neue Zeile eingefügt. Diese müssen wir jetzt wieder löschen (einfach
 mit den Pfeiltasten bis zum Ende der Datei gehen und dann die letzte Zeile löschen und diese hier dafür
 einfügen:
-```
-    @reboot python /home/pi/led-strip-fun/led-strip-ir.py
-```
+@reboot python /home/pi/led-strip-fun/led-strip-ir.py
 Jetzt nur noch mit “STRG + O” (mit Enter bestätigen) speichern, und dann mit “STRG + X” das
 Programm wieder verlassen.<br/>
 **6.** Die Fernbedienung
