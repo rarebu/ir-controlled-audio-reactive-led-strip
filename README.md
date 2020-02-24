@@ -159,9 +159,7 @@ LEDs angegeben werden:
     LED_INVERT = False
     USE_GUI = False
     DISPLAY_FPS = False
-
-
-## N_PIXELS = 120
+    N_PIXELS = 120
 
 Mit diesem Befehl startet man die Visualisation:
 sudo python /home/pi/led-strip-fun/rpi_ws281x/python/examples/visualization.py
