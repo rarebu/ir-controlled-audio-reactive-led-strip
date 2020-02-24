@@ -200,9 +200,9 @@ Keine Panik, die Installation wird folgenden Fehler melden: “Failed to start F
 input/output application support"
 Das ist kein Problem, wir müssen jetzt nur den nächsten Befehl eingeben, und dann das Infrarot-Modul
 erneut installieren:
-```sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
-sudo apt-get install lirc -y```<br/>
-**2.** Jetzt müssen wir noch ein paar änderungen an der Infrarot-Konfiguration vornehmen:
+sudo cp /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
+sudo apt-get install lirc -y<br/>
+**2.** Jetzt müssen wir noch ein paar nderungen an der Infrarot-Konfiguration vornehmen:
 ```sudo geany /etc/lirc/lirc_options.conf```
 Folgende Zeilen müssen geändert werden:
 ```
